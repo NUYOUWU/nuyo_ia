@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Nuyo IA</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<main class="container">
+		<h1>NUYO IA</h1>
+		<p class="subtitle">Servidor local de agentes con ollama y kimi</p>
+
+		<label for="agent">Agente</label>
+		<select id="agent">
+			<option value="linux_doctor">Linux Doctor - ollama local</option>
+			<option value="code_helper">Code Helper - ollama local</option>
+			<option value="kimi_architect">Kimi Architect - NVIDIA remoto</option>
+		</select>
+
+		<label for="prompt">Prompt</label>
+		<textarea id="prompt" placeholder="escribe tu pregunta..."></textarea>
+		
+		<button id="sendBtn">Enviar</button>
+
+		<section class="response-box">
+			<h2>Respuesta</h2>
+			<pre id="response">Esperando pregunta...</pre>
+		</section>
+	</main>
+	
+	<script src="/static/app.js"></script>
+</body>
+</html>
