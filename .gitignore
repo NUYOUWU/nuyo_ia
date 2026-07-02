@@ -1,5 +1,28 @@
+# Python
 __pycache__/
 *.pyc
-.env
-venv/
+*.pyo
+*.pyd
+
+# Entornos virtuales
 .venv/
+venv/
+env/
+
+# Variables privadas
+.env
+.env.*
+
+# Base de datos local
+nuyo_ia.db
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs
+*.log
+
+# Sistema / editor
+.DS_Store
+.vscode/
+.idea/

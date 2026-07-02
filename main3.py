@@ -4,9 +4,11 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+from db import init_db, save_chat, get_history
 
 
 app = FastAPI()
+init_db()
 
 app.mount("/static", StaticFiles(directory="frontend"),name="static")
 
@@ -106,7 +108,7 @@ def ask_kimi(model: str, system: str, prompt: str) -> str:
 def root():
     return {
         "message": "Nuyo IA Server esta funcionando",
-        "rutas": ["/health", "/agents", "/docs", "/chat", "/ui"]
+        "rutas": ["/health", "/agents", "/docs", "/chat", "/ui", "/history"]
     }
 
 
@@ -143,6 +145,13 @@ def chat(req: ChatRequest):
         return {
             "error": f"Provider inválido: {provider}"
         }
+    save_chat(
+    agent=req.agent,
+    provider=provider,
+    model=model,
+    prompt=req.prompt,
+    answer=answer
+    )
 
     return {
         "agent": req.agent,
@@ -151,7 +160,13 @@ def chat(req: ChatRequest):
         "answer": answer
     }
 
+
 @app.get("/ui")
 def ui():
     return FileResponse("frontend/index.html")
 
+@app.get("/history")
+def history(limit: int = 20):
+	return {
+	    "history": get_history(limit)
+}
