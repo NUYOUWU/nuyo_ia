@@ -1,28 +1,10 @@
-# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# Entornos virtuales
-.venv/
-venv/
-env/
-
-# Variables privadas
 .env
-.env.*
-
-# Base de datos local
-nuyo_ia.db
-*.sqlite
-*.sqlite3
-*.db
-
-# Logs
-*.log
-
-# Sistema / editor
+venv/
+.venv/
+node_modules/
+.cache/
 .DS_Store
-.vscode/
-.idea/
